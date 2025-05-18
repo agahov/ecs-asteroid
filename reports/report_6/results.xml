@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites id="2025-05-18" name="report_6" tests="3" failures="0" time="0.044">
+	<testsuite id="0" name="test_ecs_groups" package="tests" timestamp="2025-05-18T12:39:15" hostname="localhost" tests="3" failures="0" errors="0" skipped="0" time="0.044">
+		<testcase name="test_add_to_group_when_all_components_present" classname="test_ecs_groups" time="0.009">
+		</testcase>
+		<testcase name="test_remove_from_group_when_component_missing" classname="test_ecs_groups" time="0.013">
+		</testcase>
+		<testcase name="test_update_group_when_components_change" classname="test_ecs_groups" time="0.020">
+		</testcase>
+	</testsuite>
+</testsuites>

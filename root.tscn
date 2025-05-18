@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc46bqm12h4vh"]
+
+[ext_resource type="Script" uid="uid://bl8v13pyo1jc0" path="res://root.gd" id="1_pq8q7"]
+[ext_resource type="Script" uid="uid://cp5rn7dunh1ug" path="res://ecs/core/systems/render/PolygonRenderSystem.gd" id="2_pyidc"]
+[ext_resource type="Script" uid="uid://d3f7ryvryun8h" path="res://ecs/core/systems/render/AddToStageSystem.gd" id="2_vvh5c"]
+[ext_resource type="PackedScene" uid="uid://cmjo7c23cinj1" path="res://ecs/core/entity/ship.tscn" id="4_28aoi"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_pq8q7")
+
+[node name="game" type="Node" parent="."]
+
+[node name="Canvas" type="Node2D" parent="game"]
+
+[node name="ecs" type="Node" parent="game"]
+
+[node name="systems" type="Node" parent="game/ecs"]
+
+[node name="AddToStageSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
+script = ExtResource("2_vvh5c")
+canvas = NodePath("../../../Canvas")
+is_active = true
+
+[node name="PolygonRenderSystem" type="Node" parent="game/ecs/systems"]
+script = ExtResource("2_pyidc")
+is_active = true
+
+[node name="entity" type="Node" parent="game/ecs"]
+
+[node name="Ship" parent="game/ecs/entity" instance=ExtResource("4_28aoi")]
+
+[editable path="game/ecs/entity/Ship"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmjo7c23cinj1"]
+
+[ext_resource type="Script" uid="uid://rjywnx4qbaut" path="res://ecs/core/entity/ship.gd" id="1_g0wmu"]
+[ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="2_teiqt"]
+[ext_resource type="Script" uid="uid://bdhm8q0iuu1p2" path="res://ecs/core/components/polygon-render.gd" id="3_44j75"]
+[ext_resource type="Script" uid="uid://x6hp8c3hnfg5" path="res://ecs/core/components/add.gd" id="4_44j75"]
+
+[node name="Ship" type="Node"]
+script = ExtResource("1_g0wmu")
+
+[node name="Position" type="Node" parent="."]
+script = ExtResource("2_teiqt")
+
+[node name="PoligonRender" type="Node" parent="."]
+script = ExtResource("3_44j75")
+render_points = PackedVector2Array(-5, -5, 0, 5, 5, 5, -5, -5)
+
+[node name="Add" type="Node" parent="."]
+script = ExtResource("4_44j75")
