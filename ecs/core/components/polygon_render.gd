@@ -8,7 +8,5 @@ var polygon: Polygon2D = Polygon2D.new()
 var is_changed: bool = true
 
 
-
-
-func _ready() -> void:
-	_comp_type = Ecs.Components.POLYGON_RENDER
+func _init():
+	_comp_type = Components.POLYGON_RENDER

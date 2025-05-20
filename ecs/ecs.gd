@@ -1,21 +1,17 @@
 extends Node
 
+#var QueryGroup = load("res://ecs/types/query-group.gd")
+#var Components = load("res://ecs/types/components.gd")
+
 #ecs
-enum Shapes {CIRCLE, RECT, TRIANGL, POLIGON}
-enum QueryGroup {ADDED, RENDERABL}
-enum Components {POLYGON_RENDER, POSITION, ADD}
-# logger
 enum LoggerDomain {CORE_ERROR}
 
 var group_components = {
-	QueryGroup.ADDED: [Components.POLYGON_RENDER, Components.ADD],
+	QueryGroup.ADDED: [Components.POLYGON_RENDER, Components.OUT_OF_STAGE],
 	QueryGroup.RENDERABL: [Components.POSITION, Components.POLYGON_RENDER],
+	QueryGroup.INPUT_MOVE: [Components.INPUT_MOVEMENT],
+	QueryGroup.MOVEABLE: [Components.MOVEMENT, Components.POSITION],
 }
-
-
-func to_s(e, enum_key) -> String:
-	return e.keys()[enum_key]
-
 
 var _component_types = {}
 func register_component_type(component_name: String, component_script: Script) -> void:
@@ -27,22 +23,18 @@ func create_component(component_name: String) -> Component:
 	if component_script:
 		var component = component_script.new()
 		return component
-	#push_warning("Component type '%s' not found in factory" % component_name)
-	#Loggie.msg("_comp_type is null").domain(Ecs.to_s(Ecs.LoggerDomain, Ecs.LoggerDomain.CORE_ERROR)).error()
 	Loggie.msg("comp_type not found", component_name).domain(Ecs.to_s(Ecs.LoggerDomain,
 	 Ecs.LoggerDomain.CORE_ERROR)).error()
-	#push_warning("Component type '%s' not found in factory" % component_name)
 	return null
 
 # Get all registered component types
 func get_registered_components() -> Array:
 	return _component_types.keys()
 
-
 # Initialize component types
 func _ready():
 	# Register all component types
-	register_component_type(Ecs.to_s(Ecs.Components, Ecs.Components.POSITION),
-	 preload("res://ecs/core/components/position.gd"))
-	register_component_type(Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER),
-	 preload("res://ecs/core/components/polygon-render.gd"))
+	register_component_type(Components.POSITION,
+	 load("res://ecs/core/components/position.gd"))
+	register_component_type(Components.POLYGON_RENDER,
+	 load("res://ecs/core/components/polygon-render.gd"))

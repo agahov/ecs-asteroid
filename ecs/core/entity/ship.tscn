@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmjo7c23cinj1"]
+[gd_scene load_steps=7 format=3 uid="uid://cmjo7c23cinj1"]
 
 [ext_resource type="Script" uid="uid://rjywnx4qbaut" path="res://ecs/core/entity/ship.gd" id="1_g0wmu"]
 [ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="2_teiqt"]
-[ext_resource type="Script" uid="uid://bdhm8q0iuu1p2" path="res://ecs/core/components/polygon-render.gd" id="3_44j75"]
-[ext_resource type="Script" uid="uid://x6hp8c3hnfg5" path="res://ecs/core/components/add.gd" id="4_44j75"]
+[ext_resource type="Script" uid="uid://bdhm8q0iuu1p2" path="res://ecs/core/components/polygon_render.gd" id="3_44j75"]
+[ext_resource type="Script" uid="uid://cuayj80ivhucs" path="res://ecs/core/components/out_of_stage.gd" id="4_hofwa"]
+[ext_resource type="Script" uid="uid://x6hp8c3hnfg5" path="res://ecs/core/components/input_movement.gd" id="5_g77kb"]
+[ext_resource type="Script" uid="uid://cruyreg220sxw" path="res://ecs/core/components/movement.gd" id="6_uwp4s"]
 
 [node name="Ship" type="Node"]
 script = ExtResource("1_g0wmu")
@@ -13,7 +15,15 @@ script = ExtResource("2_teiqt")
 
 [node name="PoligonRender" type="Node" parent="."]
 script = ExtResource("3_44j75")
-render_points = PackedVector2Array(-5, -5, 0, 5, 5, 5, -5, -5)
+render_points = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 0)
 
-[node name="Add" type="Node" parent="."]
-script = ExtResource("4_44j75")
+[node name="OutOfStage" type="Node" parent="."]
+script = ExtResource("4_hofwa")
+
+[node name="InputMovement" type="Node" parent="."]
+script = ExtResource("5_g77kb")
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("6_uwp4s")
+direction = Vector2(1, 1)
+speed = 100

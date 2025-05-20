@@ -1,7 +1,7 @@
 extends Node
 class_name Component
 
-var _comp_type: Ecs.Components
+var _comp_type: String
 
 
 func _ready() -> void:
@@ -10,4 +10,4 @@ func _ready() -> void:
 
 
 func get_comp_name() -> String:
-	return Ecs.to_s(Ecs.Components, _comp_type)
+	return _comp_type

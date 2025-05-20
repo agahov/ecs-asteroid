@@ -1,11 +1,7 @@
 extends Component
 
 
-@export var pos:Vector2
+@export var position: Vector2
 
 func _ready() -> void:
-	_comp_type = Ecs.Components.POSITION
-	
-	
-	
-	
+	_comp_type = Components.POSITION

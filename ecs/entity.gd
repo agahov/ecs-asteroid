@@ -22,7 +22,6 @@ func add_component(comp):
 
 
 func remove_component(comp):
-	#if has_node(comp.name):
 	if get_node_or_null(NodePath(comp.name)) != null:
 		remove_child(comp)
 		components.erase(comp.get_comp_name())
@@ -50,12 +49,12 @@ func _update_groups():
 		var has_all_components = true
 		
 		for comp_name in required_components:
-			if not components.has(Ecs.to_s(Ecs.Components, comp_name)):
+			if not components.has(comp_name):
 				has_all_components = false
 				break
 		
 		# Update group membership
-		var group_name = Ecs.to_s(Ecs.QueryGroup, group)
+		var group_name = group
 		if has_all_components:
 			if not is_in_group(group_name):
 				add_to_group(group_name)

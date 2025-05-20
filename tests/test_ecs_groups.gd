@@ -1,50 +1,63 @@
 extends GdUnitTestSuite
 
+var QueryGroup = load("res://ecs/types/query-group.gd")
+var Components = load("res://ecs/types/components.gd")
+
 var _ecs: Node
-var _entity: Entity
+var _entities = []
 
 func before():
-	_ecs = auto_free(Node.new())
-	_ecs.set_script(load("res://ecs/ecs.gd"))
-	add_child(_ecs)
-	
-	_entity = auto_free(Entity.new())
-	add_child(_entity)
+	_ecs = Ecs
+	print("Before: ", get_child_count())
 
-func test_add_to_group_when_all_components_present():
-	# Given
-	var position_comp = _ecs.create_component(Ecs.to_s(Ecs.Components, Ecs.Components.POSITION))
-	var render_comp = _ecs.create_component(Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER))
-	
-	# When
-	_entity.add_component(position_comp)
-	_entity.add_component(render_comp)
-	
-	# Then
-	assert_that(_entity.is_in_group(Ecs.to_s(Ecs.QueryGroup, Ecs.QueryGroup.RENDERABL))).is_true()
+func after():
+	for entity in _entities:
+		remove_child(entity)
+		entity.queue_free()
+	_entities.clear()
+	print("After: ", get_child_count())
 
-func test_remove_from_group_when_component_missing():
-	# Given
-	var position_comp = _ecs.create_component(Ecs.to_s(Ecs.Components, Ecs.Components.POSITION))
-	var render_comp = _ecs.create_component(Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER))
+func test_add_components():
+	var entity = Entity.new()
+	add_child(entity)
+	_entities.append(entity)
 	
-	# When
-	_entity.add_component(position_comp)
-	_entity.add_component(render_comp)
-	_entity.remove_component(render_comp)
+	var position_comp = _ecs.create_component(Components.POSITION)
+	var render_comp = _ecs.create_component(Components.POLYGON_RENDER)
 	
-	# Then
-	assert_that(_entity.is_in_group(Ecs.to_s(Ecs.QueryGroup, Ecs.QueryGroup.RENDERABL))).is_false()
+	entity.add_component(position_comp)
+	entity.add_component(render_comp)
+	
+	assert_that(entity.is_in_group(QueryGroup.RENDERABL)).is_true()
 
-func test_update_group_when_components_change():
-	# Given
-	var position_comp = _ecs.create_component(Ecs.to_s(Ecs.Components, Ecs.Components.POSITION))
-	var render_comp = _ecs.create_component(Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER))
+func test_remove_component():
+	var entity = Entity.new()
+	add_child(entity)
+	_entities.append(entity)
 	
-	# When
-	_entity.add_component(position_comp)
-	assert_that(_entity.is_in_group(Ecs.to_s(Ecs.QueryGroup, Ecs.QueryGroup.RENDERABL))).is_false()
+	var position_comp = _ecs.create_component(Components.POSITION)
+	var render_comp = _ecs.create_component(Components.POLYGON_RENDER)
 	
-	# Then
-	_entity.add_component(render_comp)
-	assert_that(_entity.is_in_group(Ecs.to_s(Ecs.QueryGroup, Ecs.QueryGroup.RENDERABL))).is_true()
+	entity.add_component(position_comp)
+	entity.add_component(render_comp)
+	
+	entity.remove_component(position_comp)
+	
+	assert_that(entity.is_in_group(QueryGroup.RENDERABL)).is_false()
+
+func test_add_remove_component():
+	var entity = Entity.new()
+	add_child(entity)
+	_entities.append(entity)
+	
+	var position_comp = _ecs.create_component(Components.POSITION)
+	var render_comp = _ecs.create_component(Components.POLYGON_RENDER)
+	
+	entity.add_component(position_comp)
+	entity.add_component(render_comp)
+	
+	assert_that(entity.is_in_group(QueryGroup.RENDERABL)).is_true()
+	
+	entity.remove_component(position_comp)
+	
+	assert_that(entity.is_in_group(QueryGroup.RENDERABL)).is_false()
