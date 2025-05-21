@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dis3t5iyrqn0u"]
+
+[ext_resource type="Script" uid="uid://byktdrkemkuau" path="res://ecs/core/components/timer.gd" id="1_humgk"]
+[ext_resource type="Script" uid="uid://baxejysbvjqyw" path="res://ecs/core/entity/e_instance.gd" id="1_ynnsw"]
+[ext_resource type="Script" uid="uid://dkesblnwuxxde" path="res://ecs/core/components/asteroid.gd" id="2_rrpy0"]
+[ext_resource type="Script" uid="uid://bvtbnv24r7elu" path="res://ecs/core/components/builder.gd" id="3_ynnsw"]
+
+[node name="AsteroidCreator" type="Node"]
+script = ExtResource("1_ynnsw")
+
+[node name="Timer" type="Node" parent="."]
+script = ExtResource("1_humgk")
+time = 2.0
+repeate = -1
+
+[node name="Asteroid" type="Node" parent="."]
+script = ExtResource("2_rrpy0")
+
+[node name="Builder" type="Node" parent="."]
+script = ExtResource("3_ynnsw")

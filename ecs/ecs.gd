@@ -11,6 +11,9 @@ var group_components = {
 	QueryGroup.RENDERABL: [Components.POSITION, Components.POLYGON_RENDER],
 	QueryGroup.INPUT_MOVE: [Components.INPUT_MOVEMENT],
 	QueryGroup.MOVEABLE: [Components.MOVEMENT, Components.POSITION],
+	QueryGroup.TIME_ACTIVATE: [Components.TIMER],
+	QueryGroup.ASTROID_CREATOR: [Components.ASTEROID, Components.BUILDER, Components.ACTIVE, ],
+	
 }
 
 var _component_types = {}
@@ -38,3 +41,17 @@ func _ready():
 	 load("res://ecs/core/components/position.gd"))
 	register_component_type(Components.POLYGON_RENDER,
 	 load("res://ecs/core/components/polygon-render.gd"))
+	register_component_type(Components.OUT_OF_STAGE,
+	 load("res://ecs/core/components/out-of-stage.gd"))
+	register_component_type(Components.INPUT_MOVEMENT,
+	 load("res://ecs/core/components/input-movement.gd"))
+	register_component_type(Components.MOVEMENT,
+	 load("res://ecs/core/components/movement.gd"))
+	register_component_type(Components.TIMER,
+	 load("res://ecs/core/components/timer.gd"))
+	register_component_type(Components.ASTEROID,
+	 load("res://ecs/core/components/asteroid.gd"))
+	register_component_type(Components.BUILDER,
+	 load("res://ecs/core/components/builder.gd"))
+	register_component_type(Components.ACTIVE,
+	 load("res://ecs/core/components/active.gd"))

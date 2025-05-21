@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://hdw0ri3i2fm6"]
+
+[ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="1_kxidp"]
+[ext_resource type="Script" uid="uid://bgu4rdtht7f6b" path="res://ecs/core/entity/asteroid.gd" id="1_oykf8"]
+[ext_resource type="Script" uid="uid://bdhm8q0iuu1p2" path="res://ecs/core/components/polygon_render.gd" id="2_oykf8"]
+[ext_resource type="Script" uid="uid://cuayj80ivhucs" path="res://ecs/core/components/out_of_stage.gd" id="3_mumeg"]
+[ext_resource type="Script" uid="uid://cruyreg220sxw" path="res://ecs/core/components/movement.gd" id="4_l0nmj"]
+
+[node name="Asteroid" type="Node"]
+script = ExtResource("1_oykf8")
+
+[node name="Position" type="Node" parent="."]
+script = ExtResource("1_kxidp")
+
+[node name="PoligonRender" type="Node" parent="."]
+script = ExtResource("2_oykf8")
+render_points = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 0)
+
+[node name="OutOfStage" type="Node" parent="."]
+script = ExtResource("3_mumeg")
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("4_l0nmj")
+direction = Vector2(1, 1)
+speed = 100

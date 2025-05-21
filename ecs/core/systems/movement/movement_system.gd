@@ -1,16 +1,12 @@
 extends System
 
-
-
-var queary_group
-
 var group = QueryGroup.RENDERABL
 
 @export var canvas: Node2D
 
 func _ready() -> void:
-	pass
-	print("render")
+
+	print("movment system")
 
 
 #func _activate() -> void:

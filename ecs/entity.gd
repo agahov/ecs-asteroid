@@ -33,10 +33,10 @@ func remove_component_by_name(comp_name):
 	remove_component(comp)
 
 
+
 func _reg_comp(comp):
 	if components.has(comp.get_comp_name()):
-		Loggie.msg("_comp exist").domain(Ecs.to_s(Ecs.LoggerDomain,
-			Ecs.LoggerDomain.CORE_ERROR)).warn()
+		Loggie.msg("_comp exist").domain("CORE_ERROR").warn()
 		return
 	else:
 		components[comp.get_comp_name()] = comp
