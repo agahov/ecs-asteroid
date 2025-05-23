@@ -63,8 +63,20 @@ speed = 50
 [node name="Position" parent="game/ecs/entity/Ship" index="0"]
 position = Vector2(20, 20)
 
-[node name="AsteroidCreator" parent="game/ecs/entity" instance=ExtResource("8_bf3um")]
+[node name="AsteroidCreatorLeft" parent="game/ecs/entity" instance=ExtResource("8_bf3um")]
+
+[node name="Builder" parent="game/ecs/entity/AsteroidCreatorLeft" index="2"]
+area = Rect2(-10, 0, 10, 500)
+
+[node name="AsteroidCreatorRight" parent="game/ecs/entity" instance=ExtResource("8_bf3um")]
+
+[node name="Timer" parent="game/ecs/entity/AsteroidCreatorRight" index="0"]
+time = 1.0
+
+[node name="Builder" parent="game/ecs/entity/AsteroidCreatorRight" index="2"]
+area = Rect2(500, 0, 10, 500)
 
 [editable path="game/ecs/entity/Asteroid"]
 [editable path="game/ecs/entity/Ship"]
-[editable path="game/ecs/entity/AsteroidCreator"]
+[editable path="game/ecs/entity/AsteroidCreatorLeft"]
+[editable path="game/ecs/entity/AsteroidCreatorRight"]
