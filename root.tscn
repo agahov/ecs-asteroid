@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc46bqm12h4vh"]
+[gd_scene load_steps=15 format=3 uid="uid://dc46bqm12h4vh"]
 
 [ext_resource type="Script" uid="uid://bl8v13pyo1jc0" path="res://root.gd" id="1_pq8q7"]
 [ext_resource type="Script" uid="uid://cp5rn7dunh1ug" path="res://ecs/core/systems/render/PolygonRenderSystem.gd" id="2_pyidc"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" uid="uid://c6e653hunm8q" path="res://ecs/core/systems/timer_system.gd" id="7_huihk"]
 [ext_resource type="PackedScene" uid="uid://hdw0ri3i2fm6" path="res://ecs/core/entity/asteroid.tscn" id="7_tw3kd"]
 [ext_resource type="PackedScene" uid="uid://dis3t5iyrqn0u" path="res://ecs/core/entity/asteroid_creator.tscn" id="8_bf3um"]
+[ext_resource type="Script" uid="uid://c57e1pes6dmu2" path="res://ecs/core/systems/collision/collision_data_update_system.gd" id="9_gd4vy"]
+[ext_resource type="Script" uid="uid://w6k7n4hrwepr" path="res://ecs/core/systems/movement/asteroid_movement.gd" id="9_qwhpj"]
+[ext_resource type="Script" uid="uid://dk6jftk2yabo2" path="res://ecs/core/systems/collision/hit_system.gd" id="10_qw60f"]
+[ext_resource type="Script" uid="uid://c5badddlnurtg" path="res://ecs/core/systems/collision/damage_system.gd" id="11_eji0w"]
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_pq8q7")
@@ -18,6 +22,22 @@ script = ExtResource("1_pq8q7")
 
 [node name="Canvas" type="Node2D" parent="game"]
 
+[node name="Ship" parent="game/Canvas" instance=ExtResource("4_28aoi")]
+
+[node name="Asteroid" parent="game/Canvas" instance=ExtResource("7_tw3kd")]
+
+[node name="Position" parent="game/Canvas/Asteroid" index="1"]
+position = Vector2(290, 290)
+
+[node name="Movement" parent="game/Canvas/Asteroid" index="4"]
+speed = 50
+
+[node name="Style" parent="game/Canvas/Asteroid" index="5"]
+color = Color(0.898091, 0.219815, 0.70392, 1)
+
+[node name="Area2D" parent="game/Canvas/Asteroid/Collider" index="0"]
+position = Vector2(300, 0)
+
 [node name="ecs" type="Node" parent="game"]
 
 [node name="systems" type="Node" parent="game/ecs"]
@@ -25,7 +45,6 @@ script = ExtResource("1_pq8q7")
 [node name="AddToStageSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
 script = ExtResource("2_vvh5c")
 canvas = NodePath("../../../Canvas")
-is_active = true
 
 [node name="PolygonRenderSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("2_pyidc")
@@ -33,37 +52,41 @@ is_active = true
 
 [node name="InputMovementSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("4_l8v81")
+is_active = true
 
 [node name="MovementSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("5_vyht1")
+is_active = true
 
-[node name="AsteroidCreateSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("entity_container", "canvas")]
+[node name="AsteroidCreateSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
 script = ExtResource("6_vyht1")
-entity_container = NodePath("../../entity")
 asteroid_scene = ExtResource("7_tw3kd")
 canvas = NodePath("../../../Canvas")
 is_active = true
+
+[node name="AsteroidMoveSystem" type="Node" parent="game/ecs/systems"]
+script = ExtResource("9_qwhpj")
 
 [node name="TimerSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("7_huihk")
 is_active = true
 
+[node name="CollisionDataUpdateSystem" type="Node" parent="game/ecs/systems"]
+script = ExtResource("9_gd4vy")
+
+[node name="HitSystem" type="Node" parent="game/ecs/systems"]
+script = ExtResource("10_qw60f")
+
+[node name="DamageSystem" type="Node" parent="game/ecs/systems"]
+script = ExtResource("11_eji0w")
+
 [node name="entity" type="Node" parent="game/ecs"]
 
-[node name="Asteroid" parent="game/ecs/entity" instance=ExtResource("7_tw3kd")]
-
-[node name="Position" parent="game/ecs/entity/Asteroid" index="0"]
-position = Vector2(0, 100)
-
-[node name="Movement" parent="game/ecs/entity/Asteroid" index="3"]
-speed = 50
-
-[node name="Ship" parent="game/ecs/entity" instance=ExtResource("4_28aoi")]
-
-[node name="Position" parent="game/ecs/entity/Ship" index="0"]
-position = Vector2(20, 20)
-
 [node name="AsteroidCreatorLeft" parent="game/ecs/entity" instance=ExtResource("8_bf3um")]
+
+[node name="Timer" parent="game/ecs/entity/AsteroidCreatorLeft" index="0"]
+time = 4.0
+repeate = 3
 
 [node name="Builder" parent="game/ecs/entity/AsteroidCreatorLeft" index="2"]
 area = Rect2(-10, 0, 10, 500)
@@ -71,12 +94,15 @@ area = Rect2(-10, 0, 10, 500)
 [node name="AsteroidCreatorRight" parent="game/ecs/entity" instance=ExtResource("8_bf3um")]
 
 [node name="Timer" parent="game/ecs/entity/AsteroidCreatorRight" index="0"]
-time = 1.0
+time = 6.0
+repeate = 1
 
 [node name="Builder" parent="game/ecs/entity/AsteroidCreatorRight" index="2"]
-area = Rect2(500, 0, 10, 500)
+area = Rect2(800, 0, 10, 500)
 
-[editable path="game/ecs/entity/Asteroid"]
-[editable path="game/ecs/entity/Ship"]
+[editable path="game/Canvas/Ship"]
+[editable path="game/Canvas/Ship/Collider"]
+[editable path="game/Canvas/Asteroid"]
+[editable path="game/Canvas/Asteroid/Collider"]
 [editable path="game/ecs/entity/AsteroidCreatorLeft"]
 [editable path="game/ecs/entity/AsteroidCreatorRight"]

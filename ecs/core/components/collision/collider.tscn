@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg3gx47ypfh56"]
+
+[ext_resource type="Script" uid="uid://brws3ikvxm18v" path="res://ecs/core/components/collision/collider.gd" id="1_kdx6q"]
+
+[node name="Collider" type="Node"]
+script = ExtResource("1_kdx6q")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 10, 0, 0)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

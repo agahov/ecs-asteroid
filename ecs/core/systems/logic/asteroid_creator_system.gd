@@ -3,8 +3,10 @@ extends System
 
 var queary_group
 
-@export var entity_container: Node
-var group = QueryGroup.ASTROID_CREATOR
+#@export var entity_container: Node
+#@export var canvas: Node
+
+var group = QueryGroup.ASTEROID_CREATOR
 
 #move to 
 @export var asteroid_scene: PackedScene
@@ -18,7 +20,7 @@ var scen_height: int = 500
 
 func _ready() -> void:
 	pass
-	print("asteriod creator")
+	print("asteriod creator system")
 
 
 #func _activate() -> void:
@@ -42,14 +44,15 @@ func _process(_delta):
 #render data point
 
 func create(entity, _delta):
-	print("create asteroid")
+	#print("create asteroid")
 	entity.remove_component_by_name(Components.ACTIVE)
 	
 	var builder_comp = entity.get_comp(Components.BUILDER)
 	#??? position 
 	#var poly_comp_name = Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER)
 	var new_entity = asteroid_scene.instantiate()
-	entity_container.add_child(new_entity)
+	#entity_container.add_child(new_entity)
+	canvas.add_child(new_entity)
 	var position_comp = new_entity.get_comp(Components.POSITION)
 	var movement_comp = new_entity.get_comp(Components.MOVEMENT)
 	

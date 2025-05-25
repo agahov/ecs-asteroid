@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmjo7c23cinj1"]
+[gd_scene load_steps=11 format=3 uid="uid://cmjo7c23cinj1"]
 
 [ext_resource type="Script" uid="uid://rjywnx4qbaut" path="res://ecs/core/entity/ship.gd" id="1_g0wmu"]
 [ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="2_teiqt"]
@@ -6,12 +6,20 @@
 [ext_resource type="Script" uid="uid://cuayj80ivhucs" path="res://ecs/core/components/out_of_stage.gd" id="4_hofwa"]
 [ext_resource type="Script" uid="uid://x6hp8c3hnfg5" path="res://ecs/core/components/input_movement.gd" id="5_g77kb"]
 [ext_resource type="Script" uid="uid://cruyreg220sxw" path="res://ecs/core/components/movement.gd" id="6_uwp4s"]
+[ext_resource type="Script" uid="uid://byrqkpc2afl31" path="res://ecs/core/components/style.gd" id="7_uwp4s"]
+[ext_resource type="PackedScene" uid="uid://bg3gx47ypfh56" path="res://ecs/core/components/collision/collider.tscn" id="8_12iiu"]
+[ext_resource type="Script" uid="uid://bepa756jgkwax" path="res://ecs/core/components/ship.gd" id="9_pjt7e"]
+[ext_resource type="Script" uid="uid://14xnmrd870t" path="res://ecs/core/components/health.gd" id="10_awg2e"]
 
 [node name="Ship" type="Node"]
 script = ExtResource("1_g0wmu")
 
+[node name="Ship" type="Node" parent="."]
+script = ExtResource("9_pjt7e")
+
 [node name="Position" type="Node" parent="."]
 script = ExtResource("2_teiqt")
+position = Vector2(300, 300)
 
 [node name="PoligonRender" type="Node" parent="."]
 script = ExtResource("3_44j75")
@@ -27,3 +35,17 @@ script = ExtResource("5_g77kb")
 script = ExtResource("6_uwp4s")
 direction = Vector2(1, 1)
 speed = 100
+
+[node name="Style" type="Node" parent="."]
+script = ExtResource("7_uwp4s")
+color = Color(0.376128, 0.7634, 0.359575, 1)
+
+[node name="Collider" parent="." instance=ExtResource("8_12iiu")]
+
+[node name="Area2D" parent="Collider" index="0"]
+monitorable = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("10_awg2e")
+
+[editable path="Collider"]

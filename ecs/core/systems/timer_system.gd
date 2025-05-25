@@ -10,7 +10,7 @@ var group = QueryGroup.TIME_ACTIVATE
 
 func _ready() -> void:
 	pass
-	print("timer")
+	print("timer system")
 
 
 
@@ -33,13 +33,13 @@ func update(entity, _delta):
 	var timer_comp = entity.get_comp(Components.TIMER)
 	
 	timer_comp.current_time -=_delta
-	print("timer: "+str(timer_comp.current_time))
+	#print("timer: "+str(timer_comp.current_time))
 	if timer_comp.current_time <= 0:
 		trigger(	entity,timer_comp)
 
 	
 func trigger(entity,timer_comp):	
-	print(" ... fire time trigger")
+	#print(" ... fire time trigger")
 	var active_comp = Ecs.create_component(Components.ACTIVE)
 	
 	entity.add_component(active_comp)

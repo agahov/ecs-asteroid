@@ -1,8 +1,8 @@
 extends System
 
-var group = QueryGroup.RENDERABL
+var group = QueryGroup.MOVEABLE
 
-@export var canvas: Node2D
+
 
 func _ready() -> void:
 
