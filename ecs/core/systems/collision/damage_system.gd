@@ -1,22 +1,15 @@
 extends System
 
-var group = QueryGroup.DAMAGEABLE
+
 
 @export var canvas: Node2D
 
-func _ready() -> void:
+func get_group():
+	return QueryGroup.DAMAGEABLE
 
-	print("damage system")
 
 
-#func _activate() -> void:
-	#
-	#var entities = get_tree().get_nodes_in_group(group)
-	#
-	## Process each entity
-	#for entity in entities:
-		#canvas.add_child(entity.c_polygon)
-		
+
 		
 func _process(_delta):
 	# Get all entities in the renderable group

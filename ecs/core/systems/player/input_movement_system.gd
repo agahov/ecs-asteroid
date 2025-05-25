@@ -4,11 +4,10 @@ extends System
 
 
 
-var group = QueryGroup.INPUT_MOVE
+#var group = 
+func get_group():
+	return QueryGroup.INPUT_MOVE
 
-
-func _ready() -> void:
-	print("Input system")
 
 
 

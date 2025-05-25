@@ -1,12 +1,12 @@
 extends System
 
-var group = QueryGroup.MOVEABLE
 
 
 
-func _ready() -> void:
 
-	print("movment system")
+func get_group():
+	return QueryGroup.MOVEABLE
+
 
 
 #func _activate() -> void:

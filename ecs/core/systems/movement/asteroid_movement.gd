@@ -1,10 +1,17 @@
 extends System
 
 
-var group = QueryGroup.ASTEROID_MOVE
+#var group = QueryGroup.ASTEROID_MOVE
+func get_group():
+	return QueryGroup.ASTEROID_MOVE
+
+
 
 var off_set = 100
 var bound:Rect2 = Rect2(-off_set,-off_set, Ecs.canvas_width+off_set, Ecs.canvas_height+off_set)
+
+
+
 
 func _process(_delta):
 	# Get all entities in the renderable group

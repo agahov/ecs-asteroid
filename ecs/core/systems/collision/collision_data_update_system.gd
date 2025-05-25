@@ -1,12 +1,14 @@
 extends System
 
-var group = QueryGroup.COLLIDE_DATA
+#var group = QueryGroup.COLLIDE_DATA
 
 @export var canvas: Node2D
 
-func _ready() -> void:
 
-	print("collision data system active: "+str(is_active))
+func get_group():
+	return QueryGroup.COLLIDE_DATA
+
+
 
 
 

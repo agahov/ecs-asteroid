@@ -1,12 +1,16 @@
 extends System
 
-var group = QueryGroup.HITTER
+#var group = QueryGroup.HITTER
 
 @export var canvas: Node2D
 
-func _ready() -> void:
 
-	print("hit system")
+
+
+func get_group():
+	return QueryGroup.HITTER
+
+
 
 
 #func _activate() -> void:

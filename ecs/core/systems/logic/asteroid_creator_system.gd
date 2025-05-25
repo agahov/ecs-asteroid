@@ -1,12 +1,15 @@
 extends System
 
 
-var queary_group
+
 
 #@export var entity_container: Node
 #@export var canvas: Node
 
-var group = QueryGroup.ASTEROID_CREATOR
+
+
+func get_group():
+	return QueryGroup.ASTEROID_CREATOR
 
 #move to 
 @export var asteroid_scene: PackedScene
@@ -18,9 +21,6 @@ var scen_width: int = 500
 var scen_height: int = 500
 
 
-func _ready() -> void:
-	pass
-	print("asteriod creator system")
 
 
 #func _activate() -> void:

@@ -1,13 +1,15 @@
 extends System
 
-var queary_group
-var group = QueryGroup.ADDED
+
+#var group:
+ #get:QueryGroup.ADDED
 
 @export var canvas: Node2D
 
-func _ready() -> void:
-	pass
-	print("add to stage system")
+
+func get_group():
+	return QueryGroup.ADDED
+
 
 func _process(_delta):
 	# Get all entities in the renderable group

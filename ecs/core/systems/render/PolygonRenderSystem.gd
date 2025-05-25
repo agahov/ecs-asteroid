@@ -1,15 +1,9 @@
 extends System
 
-var queary_group
-var group = QueryGroup.RENDERABL
 
 
-
-func _ready() -> void:
-	pass
-	print("render system")
-
-
+func get_group():
+	return QueryGroup.RENDERABL
 #func _activate() -> void:
 	#
 	#var entities = get_tree().get_nodes_in_group(group)
@@ -33,4 +27,3 @@ func _process(_delta):
 		polygon_comp.polygon.polygon = polygon_comp.render_points
 		polygon_comp.polygon.position = position_comp.position
 		polygon_comp.polygon.color = style_comp.color
-	

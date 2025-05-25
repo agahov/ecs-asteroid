@@ -45,6 +45,7 @@ position = Vector2(300, 0)
 [node name="AddToStageSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
 script = ExtResource("2_vvh5c")
 canvas = NodePath("../../../Canvas")
+is_active = true
 
 [node name="PolygonRenderSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("2_pyidc")
@@ -66,6 +67,7 @@ is_active = true
 
 [node name="AsteroidMoveSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("9_qwhpj")
+is_active = true
 
 [node name="TimerSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("7_huihk")
@@ -73,12 +75,15 @@ is_active = true
 
 [node name="CollisionDataUpdateSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("9_gd4vy")
+is_active = true
 
 [node name="HitSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("10_qw60f")
+is_active = true
 
 [node name="DamageSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("11_eji0w")
+is_active = true
 
 [node name="entity" type="Node" parent="game/ecs"]
 
