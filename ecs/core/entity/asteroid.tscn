@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://hdw0ri3i2fm6"]
+[gd_scene load_steps=11 format=3 uid="uid://hdw0ri3i2fm6"]
 
 [ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="1_kxidp"]
 [ext_resource type="Script" uid="uid://bgu4rdtht7f6b" path="res://ecs/core/entity/asteroid.gd" id="1_oykf8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bg3gx47ypfh56" path="res://ecs/core/components/collision/collider.tscn" id="7_l0nmj"]
 [ext_resource type="Script" uid="uid://bdr7w7fomo7py" path="res://ecs/core/components/hit.gd" id="8_ui3le"]
 [ext_resource type="Script" uid="uid://dkesblnwuxxde" path="res://ecs/core/components/asteroid.gd" id="9_ws8qh"]
+[ext_resource type="Script" uid="uid://14xnmrd870t" path="res://ecs/core/components/health.gd" id="10_jgoya"]
 
 [node name="Asteroid" type="Node"]
 script = ExtResource("1_oykf8")
@@ -33,7 +34,7 @@ speed = 100
 
 [node name="Style" type="Node" parent="."]
 script = ExtResource("6_mumeg")
-color = Color(0.864738, 0.390938, 0.1514, 1)
+color = Color(0.905411, 0.247841, 0.622504, 1)
 
 [node name="Collider" parent="." instance=ExtResource("7_l0nmj")]
 
@@ -42,5 +43,9 @@ monitorable = true
 
 [node name="Hit" type="Node" parent="."]
 script = ExtResource("8_ui3le")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("10_jgoya")
+value = 100.0
 
 [editable path="Collider"]

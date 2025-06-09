@@ -7,6 +7,8 @@ var canvas_height = 760
 #ecs
 enum LoggerDomain {CORE_ERROR}
 
+enum Shape {RECT, CIRCLE, TRIANGL}
+
 var group_components = {
 	QueryGroup.ADDED: [Components.POLYGON_RENDER, Components.OUT_OF_STAGE],
 	QueryGroup.RENDERABL: [Components.POSITION, Components.POLYGON_RENDER, Components.STYLE],
@@ -19,6 +21,10 @@ var group_components = {
 	QueryGroup.COLLIDE_DATA: [Components.COLLIDER, Components.POSITION, Components.POLYGON_RENDER, ],
 	QueryGroup.HITTER: [Components.COLLIDER, Components.HIT],
 	QueryGroup.DAMAGEABLE: [Components.DAMAGE, Components.HEALTH, Components.STYLE ],
+	QueryGroup.POLYGON_UPDATE: [Components.POLYGON_RENDER, Components.POLYGON_SHAPE, Components.SIZE],
+	
+	
+	
 	
 }
 
