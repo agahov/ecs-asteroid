@@ -3,9 +3,12 @@ extends RefCounted
 class_name Components
 
 static var POLYGON_RENDER = "polygon_render"
+static var POLYGON_SHAPE = "polygon_shape"
 static var POSITION = "position"
 static var STYLE = "style"
+static var SIZE = "size"
 static var TIMER = "timer"#in sec
+static var LIFE_TIME = "life_time"#in sec
 static var MOVEMENT = "movement"
 static var INPUT_MOVEMENT = "input_movement"
 static var OUT_OF_STAGE = "out_of_stage"

@@ -23,7 +23,15 @@ func _process(_delta):
 		var position_comp = entity.get_comp(Components.POSITION)
 		var style_comp = entity.get_comp(Components.STYLE)
 
-#	var bg_color = entity.c_bg_color # from Size component
-		polygon_comp.polygon.polygon = polygon_comp.render_points
+
+		#TODO separate postion and form
 		polygon_comp.polygon.position = position_comp.position
+		
+		if polygon_comp.is_changed:
+			polygon_comp.polygon.polygon = polygon_comp.render_points
 		polygon_comp.polygon.color = style_comp.color
+		
+		
+		
+		# or in every data comp add is_changed flag and set for every props
+		

@@ -47,7 +47,7 @@ func update(entity, _delta):
 	for target in targets:
 		var target_entity = target.get_owner().get_owner()
 		if target_entity:
-			var damage_comp = entity.get_comp(Components.DAMAGE)
+			var damage_comp = target_entity.get_comp(Components.DAMAGE)
 			if damage_comp:
 				damage_comp.value += hit_comp.value
 			else:	

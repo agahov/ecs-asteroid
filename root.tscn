@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dc46bqm12h4vh"]
+[gd_scene load_steps=19 format=3 uid="uid://dc46bqm12h4vh"]
 
 [ext_resource type="Script" uid="uid://bl8v13pyo1jc0" path="res://root.gd" id="1_pq8q7"]
 [ext_resource type="Script" uid="uid://cp5rn7dunh1ug" path="res://ecs/core/systems/render/PolygonRenderSystem.gd" id="2_pyidc"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://w6k7n4hrwepr" path="res://ecs/core/systems/movement/asteroid_movement.gd" id="9_qwhpj"]
 [ext_resource type="Script" uid="uid://dk6jftk2yabo2" path="res://ecs/core/systems/collision/hit_system.gd" id="10_qw60f"]
 [ext_resource type="Script" uid="uid://c5badddlnurtg" path="res://ecs/core/systems/collision/damage_system.gd" id="11_eji0w"]
+[ext_resource type="Script" uid="uid://b8ba2walrqs7y" path="res://ecs/core/systems/logic/asteroid_destroy_system.gd" id="16_r3r3k"]
+[ext_resource type="Script" uid="uid://kuyl6nvmbmel" path="res://ecs/core/systems/lifetime_system.gd" id="17_blcw0"]
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_pq8q7")
@@ -91,6 +93,16 @@ is_active = true
 
 [node name="DamageSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("11_eji0w")
+is_active = true
+
+[node name="AsteroidDestroySystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
+script = ExtResource("16_r3r3k")
+canvas = NodePath("../../../Canvas")
+is_active = true
+
+[node name="LifetimeSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
+script = ExtResource("17_blcw0")
+canvas = NodePath("../../../Canvas")
 is_active = true
 
 [node name="entity" type="Node" parent="game/ecs"]

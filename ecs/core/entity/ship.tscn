@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmjo7c23cinj1"]
+[gd_scene load_steps=13 format=3 uid="uid://cmjo7c23cinj1"]
 
 [ext_resource type="Script" uid="uid://rjywnx4qbaut" path="res://ecs/core/entity/ship.gd" id="1_g0wmu"]
 [ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="2_teiqt"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bg3gx47ypfh56" path="res://ecs/core/components/collision/collider.tscn" id="8_12iiu"]
 [ext_resource type="Script" uid="uid://bepa756jgkwax" path="res://ecs/core/components/ship.gd" id="9_pjt7e"]
 [ext_resource type="Script" uid="uid://14xnmrd870t" path="res://ecs/core/components/health.gd" id="10_awg2e"]
+[ext_resource type="Script" uid="uid://cxn53mqeh7ctm" path="res://ecs/core/components/shape.gd" id="11_aj2g1"]
+[ext_resource type="Script" uid="uid://bvpb8775jlesy" path="res://ecs/core/components/size.gd" id="12_ath45"]
 
 [node name="Ship" type="Node"]
 script = ExtResource("1_g0wmu")
@@ -47,5 +49,12 @@ monitorable = true
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("10_awg2e")
+
+[node name="Shape" type="Node" parent="."]
+script = ExtResource("11_aj2g1")
+
+[node name="Size" type="Node" parent="."]
+script = ExtResource("12_ath45")
+size = Vector2(30, 30)
 
 [editable path="Collider"]

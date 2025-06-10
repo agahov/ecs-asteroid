@@ -15,7 +15,9 @@ var group_components = {
 	QueryGroup.INPUT_MOVE: [Components.INPUT_MOVEMENT],
 	QueryGroup.MOVEABLE: [Components.MOVEMENT, Components.POSITION],
 	QueryGroup.TIME_ACTIVATE: [Components.TIMER],
+	QueryGroup.LIFE_TIME: [Components.LIFE_TIME],
 	QueryGroup.ASTEROID_CREATOR: [Components.ASTEROID, Components.BUILDER, Components.ACTIVE, ],
+	QueryGroup.ASTEROID_DESTROYER: [Components.ASTEROID, Components.HEALTH, ],
 	QueryGroup.ASTEROID_MOVE: [Components.ASTEROID, Components.MOVEMENT, Components.POSITION ],
 	#TODO: extract polygon_data to comp
 	QueryGroup.COLLIDE_DATA: [Components.COLLIDER, Components.POSITION, Components.POLYGON_RENDER, ],

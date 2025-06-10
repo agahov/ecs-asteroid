@@ -32,10 +32,11 @@ func update(entity, _delta):
 	#??? position 
 	#var poly_comp_name = Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER)
 
-	var position_comp = entity.get_comp(Components.POSITION)
 	var movement_comp = entity.get_comp(Components.MOVEMENT)
+	var position_comp = entity.get_comp(Components.POSITION)
 	
 
 	position_comp.position += movement_comp.direction * movement_comp.speed *_delta
-	
+	if movement_comp.direction!= Vector2.ZERO: 
+		position_comp.direction = Vector2(movement_comp.direction)
 	
