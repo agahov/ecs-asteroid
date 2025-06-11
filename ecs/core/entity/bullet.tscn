@@ -52,6 +52,6 @@ script = ExtResource("10_aund5")
 
 [node name="Lifetime" type="Node" parent="."]
 script = ExtResource("11_j2rm7")
-time = 0.3
+time = 2.0
 
 [editable path="Collider"]

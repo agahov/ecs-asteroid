@@ -32,8 +32,10 @@ func data_gen(entity):
 		polygon_comp.render_points = rectPoints(size_comp.size)
 	elif shap_comp.shape == Types.Shape.CIRCLE:
 		polygon_comp.render_points = circlePoints(size_comp.size)
-	elif shap_comp.shape == Types.TRIANGL:
+	elif shap_comp.shape == Types.Shape.TRIANGL:
 		polygon_comp.render_points = trianglPoints(size_comp.size)
+	elif shap_comp.shape == Types.Shape.POLIGON:
+		polygon_comp.render_points = polygonPoints(size_comp.size, shap_comp.vertex_count)
 
 	
 	#print("poligon points"+str(entity.c_render_points))
@@ -61,6 +63,22 @@ func circlePoints(size) -> PackedVector2Array:
 		points.append(Vector2(x, y))
 	
 	return points
+	
+	
+func polygonPoints(size, segments) -> PackedVector2Array:
+	var radius = size.y # Using x as diameter, so radius is half
+	var points = PackedVector2Array()
+	#var segments = 32 # Number of segments to approximate the circle
+	
+	for i in range(segments):
+		var angle = (i * 2 * PI) / segments
+		var r = radius*(0.5+randf())
+		var x = r * cos(angle)
+		var y = r * sin(angle)
+		points.append(Vector2(x, y))
+	
+	return points
+	
 	
 func trianglPoints(size) -> PackedVector2Array:
 	var width = size.x
