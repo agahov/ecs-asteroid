@@ -43,10 +43,12 @@ func create_asteroid(from_entity):
 	var new_entity = asteroid_scene.instantiate()
 	canvas.add_child(new_entity)
 	
+	var parent_size = from_entity.get_comp(Components.SIZE)
 	var position_comp = new_entity.get_comp(Components.POSITION)
 	var movement_comp = new_entity.get_comp(Components.MOVEMENT)
 	var shape_comp = new_entity.get_comp(Components.POLYGON_SHAPE)
-	
+	var size_comp = new_entity.get_comp(Components.SIZE)
+	size_comp.size = Vector2(parent_size.size/2)
 	# Copy position from the destroyed asteroid
 	position_comp.position = from_entity.get_comp(Components.POSITION).position
 	

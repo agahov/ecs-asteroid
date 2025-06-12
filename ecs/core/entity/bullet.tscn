@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clq76lloa4h8p"]
+[gd_scene load_steps=13 format=3 uid="uid://clq76lloa4h8p"]
 
 [ext_resource type="Script" uid="uid://c22t4oj3maujh" path="res://ecs/entity.gd" id="1_bd1x1"]
 [ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="2_vhi4o"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bvpb8775jlesy" path="res://ecs/core/components/size.gd" id="9_supcw"]
 [ext_resource type="Script" uid="uid://cxn53mqeh7ctm" path="res://ecs/core/components/shape.gd" id="10_aund5"]
 [ext_resource type="Script" uid="uid://b2gt0pbxtx427" path="res://ecs/core/components/life_time.gd" id="11_j2rm7"]
+[ext_resource type="Script" uid="uid://14xnmrd870t" path="res://ecs/core/components/health.gd" id="12_afnn5"]
 
 [node name="Bullet" type="Node"]
 script = ExtResource("1_bd1x1")
@@ -38,6 +39,7 @@ color = Color(0.864738, 0.390938, 0.1514, 1)
 [node name="Collider" parent="." instance=ExtResource("7_j7go5")]
 
 [node name="Area2D" parent="Collider" index="0"]
+collision_layer = 512
 monitorable = true
 
 [node name="Hit" type="Node" parent="."]
@@ -53,5 +55,9 @@ script = ExtResource("10_aund5")
 [node name="Lifetime" type="Node" parent="."]
 script = ExtResource("11_j2rm7")
 time = 2.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("12_afnn5")
+value = 1.0
 
 [editable path="Collider"]

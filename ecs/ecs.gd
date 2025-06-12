@@ -16,6 +16,7 @@ var group_components = {
 	QueryGroup.MOVEABLE: [Components.MOVEMENT, Components.POSITION],
 	QueryGroup.TIME_ACTIVATE: [Components.TIMER],
 	QueryGroup.LIFE_TIME: [Components.LIFE_TIME],
+	QueryGroup.DEATH: [Components.HEALTH],#ACTIVE?
 	QueryGroup.ASTEROID_CREATOR: [Components.ASTEROID, Components.BUILDER, Components.ACTIVE, ],
 	QueryGroup.ASTEROID_DESTROYER: [Components.ASTEROID, Components.HEALTH, ],
 	QueryGroup.ASTEROID_MOVE: [Components.ASTEROID, Components.MOVEMENT, Components.POSITION ],

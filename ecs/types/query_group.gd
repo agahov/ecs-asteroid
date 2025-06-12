@@ -14,6 +14,7 @@ static var ASTEROID_DESTROYER = "asteroid_destroyer"
 static var ASTEROID_MOVE = "asteroid_move"
 static var TIME_ACTIVATE = "time_activate"
 static var LIFE_TIME = "life_time"
+static var DEATH = "death"
 #Timer + action(component)
 
 static var HITTER = "hitter"
