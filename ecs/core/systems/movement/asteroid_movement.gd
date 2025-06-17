@@ -1,6 +1,6 @@
 extends System
 
-
+@export var canvas:Node2D
 #var group = QueryGroup.ASTEROID_MOVE
 func get_group():
 	return QueryGroup.ASTEROID_MOVE
@@ -32,10 +32,17 @@ func update(entity, _delta):
 	var movement_comp = entity.get_comp(Components.MOVEMENT)
 	
 	if bound.has_point(position_comp.position) == false:
+		var render_comp = entity.get_comp(Components.POLYGON_RENDER)
+		canvas.remove_child(entity)
+		canvas.remove_child(render_comp.polygon)
+		render_comp.polygon.call_deferred("queue_free")
+
+	
 		# When out of bounds, calculate direction to a random point inside bounds
-		var target = get_random_point_in_bounds()
-		var direction = (target - position_comp.position).normalized()
-		movement_comp.direction = direction
+		
+		#var target = get_random_point_in_bounds()
+		#var direction = (target - position_comp.position).normalized()
+		#movement_comp.direction = direction
 	
 	# Update position
 	#position_comp.position += movement_comp.direction * movement_comp.speed * _delta

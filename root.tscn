@@ -80,8 +80,9 @@ asteroid_scene = ExtResource("7_tw3kd")
 canvas = NodePath("../../../Canvas")
 is_active = true
 
-[node name="AsteroidMoveSystem" type="Node" parent="game/ecs/systems"]
+[node name="AsteroidMoveSystem" type="Node" parent="game/ecs/systems" node_paths=PackedStringArray("canvas")]
 script = ExtResource("9_qwhpj")
+canvas = NodePath("../../../Canvas")
 is_active = true
 
 [node name="TimerSystem" type="Node" parent="game/ecs/systems"]
@@ -120,7 +121,7 @@ is_active = true
 time = 4.0
 
 [node name="Builder" parent="game/ecs/entity/AsteroidCreatorLeft" index="2"]
-area = Rect2(-10, 0, 10, 500)
+area = Rect2(-10, 0, 10, 720)
 
 [node name="AsteroidCreatorRight" parent="game/ecs/entity" instance=ExtResource("8_bf3um")]
 
@@ -128,7 +129,7 @@ area = Rect2(-10, 0, 10, 500)
 time = 6.0
 
 [node name="Builder" parent="game/ecs/entity/AsteroidCreatorRight" index="2"]
-area = Rect2(1280, 0, 10, 720)
+area = Rect2(1270, 0, 10, 720)
 
 [editable path="game/Canvas/Ship"]
 [editable path="game/Canvas/Ship/Collider"]

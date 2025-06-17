@@ -58,4 +58,4 @@ func create_asteroid(from_entity):
 	movement_comp.speed = randf_range(50, 100) # Adjust speed range as needed
 	
 	# Make the new asteroid smaller
-	shape_comp.vertex_count = max(6, from_entity.get_comp(Components.POLYGON_SHAPE).vertex_count - 2)
+	shape_comp.vertex_count = min(6, from_entity.get_comp(Components.POLYGON_SHAPE).vertex_count - 2)
