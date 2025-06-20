@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Loggie="*res://addons/loggie/loggie.gd"
 Ecs="*res://ecs/ecs.gd"
 Types="*res://ecs/types/types.gd"
+EcsHelpers="*res://ecs/ecs_helpers.gd"
 
 [display]
 
