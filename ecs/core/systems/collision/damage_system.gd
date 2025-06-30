@@ -1,23 +1,19 @@
 extends System
 
 
-
 @export var canvas: Node2D
 
 func get_group():
 	return QueryGroup.DAMAGEABLE
 
 
-
-
-		
 func _process(_delta):
 	# Get all entities in the renderable group
-	var entities = get_tree().get_nodes_in_group(group) 
+	var entities = get_tree().get_nodes_in_group(group)
 	
 	# Process each entity
 	for entity in entities:
-		update(entity,_delta)
+		update(entity, _delta)
 
 
 #render data point
@@ -26,17 +22,15 @@ func update(entity, _delta):
 	var health_comp = entity.get_comp(Components.HEALTH)
 	var style_comp = entity.get_comp(Components.STYLE)
 	
-	health_comp.value-=damage_comp.value*_delta
-	damage_comp.time +=_delta
+	# Check if all required components exist
+	if damage_comp == null or health_comp == null or style_comp == null:
+		return
 	
-	style_comp.color = Color.BLACK
+	health_comp.value -= damage_comp.value * _delta
+	#damage_comp.time +=_delta
 	
-	if damage_comp.time > damage_comp.life_time:
-		style_comp.color = style_comp.default_color
-		entity.remove_component(damage_comp)
+#	style_comp.color = Color.BLACK
 	
-	#var active_
-
-	
-	
-	
+	#if damage_comp.time > damage_comp.life_time:
+		#style_comp.color = style_comp.default_color
+		#entity.remove_component(damage_comp)

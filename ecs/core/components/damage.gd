@@ -6,6 +6,9 @@ extends Component
 var time: float = 0
 
 
-
 func _ready() -> void:
-	_comp_type = Components.DAMAGE
+	comp_type = Components.DAMAGE
+
+
+func _init() -> void:
+	comp_type = Components.DAMAGE

@@ -7,4 +7,4 @@ extends Component
 
 
 func _init() -> void:
-	comp_type = Components.MOVEMENT
+	comp_type = Components.IMPULSE

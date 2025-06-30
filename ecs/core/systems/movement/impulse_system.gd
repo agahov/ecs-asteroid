@@ -2,7 +2,7 @@ extends System
 
 
 func get_group():
-	return QueryGroup.MOVEABLE
+	return QueryGroup.IMPULSEABLE
 
 
 #func _activate() -> void:
@@ -28,12 +28,10 @@ func update(entity, _delta):
 	#??? position 
 	#var poly_comp_name = Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER)
 	var movement_comp = entity.get_comp(Components.MOVEMENT)
-	var position_comp = entity.get_comp(Components.POSITION)
+	var impulse_comp = entity.get_comp(Components.IMPULSE)
 	
-	# Check if required components exist
-	if movement_comp == null or position_comp == null:
-		return
-
-	position_comp.position += movement_comp.direction * movement_comp.speed * _delta
-	if movement_comp.direction != Vector2.ZERO:
-		position_comp.direction = Vector2(movement_comp.direction)
+	var v:Vector2
+	movement_comp.direction += impulse_comp.direction
+	movement_comp.direction = movement_comp.direction.normalized()
+	movement_comp.speed += impulse_comp.speed
+	entity.remove_component(impulse_comp)

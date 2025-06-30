@@ -1,12 +1,10 @@
 extends System
 
 
-@export var canvas:Node2D
+#@export var canvas: Node2D
 
 func get_group():
-	return QueryGroup.LIFE_TIME
-
-
+	return QueryGroup.DEATH
 
 
 func _process(_delta):
@@ -23,19 +21,15 @@ func update(entity, _delta):
 	#var poly_comp_name = Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER)
 	var health_comp = entity.get_comp(Components.HEALTH)
 	
+	# Check if required component exists
+	if health_comp == null:
+		return
+	
 	#print("timer: "+str(timer_comp.current_time))
 	if health_comp.value <= 0:
 		destroy(entity)
 
 	
 func destroy(entity):
-	#print(" ... fire time trigger")
-	var render_comp = entity.get_comp(Components.POLYGON_RENDER)
-	
-	if render_comp:
-		canvas.remove_child(render_comp.polygon)
-		render_comp.polygon.queue_free()
-		
-	
-	canvas.remove_child(entity)
-	entity.queue_free()
+	var active_comp = Ecs.create_component(Components.DELETE)
+	entity.add_component(active_comp)

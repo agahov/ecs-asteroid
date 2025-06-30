@@ -4,5 +4,5 @@ extends Component
 
 @export var vertex_count: int = 4
 
-func _ready() -> void:
-	_comp_type = Components.POLYGON_SHAPE
+func _init() -> void:
+	comp_type = Components.POLYGON_SHAPE

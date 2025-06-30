@@ -29,7 +29,7 @@ func get_random_point_in_bounds() -> Vector2:
 #render data point
 func update(entity, _delta):
 	var position_comp = entity.get_comp(Components.POSITION)
-	var movement_comp = entity.get_comp(Components.MOVEMENT)
+	#var movement_comp = entity.get_comp(Components.MOVEMENT)
 	
 	if bound.has_point(position_comp.position) == false:
 		var render_comp = entity.get_comp(Components.POLYGON_RENDER)

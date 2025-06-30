@@ -1,7 +1,6 @@
 extends System
 
 
-
 func get_group():
 	return QueryGroup.RENDERABL
 #func _activate() -> void:
@@ -23,6 +22,9 @@ func _process(_delta):
 		var position_comp = entity.get_comp(Components.POSITION)
 		var style_comp = entity.get_comp(Components.STYLE)
 
+		# Check if required components exist
+		if polygon_comp == null or position_comp == null or style_comp == null:
+			continue
 
 		#TODO separate postion and form
 		polygon_comp.polygon.position = position_comp.position
@@ -32,6 +34,4 @@ func _process(_delta):
 		polygon_comp.polygon.color = style_comp.color
 		
 		
-		
 		# or in every data comp add is_changed flag and set for every props
-		

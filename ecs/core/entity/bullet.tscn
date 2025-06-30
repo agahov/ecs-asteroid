@@ -15,6 +15,7 @@
 
 [node name="Bullet" type="Node"]
 script = ExtResource("1_bd1x1")
+comp_type = "bullet_entity"
 metadata/_custom_type_script = "uid://c22t4oj3maujh"
 
 [node name="Position" type="Node" parent="."]
@@ -54,7 +55,6 @@ script = ExtResource("10_aund5")
 
 [node name="Lifetime" type="Node" parent="."]
 script = ExtResource("11_j2rm7")
-time = 2.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("12_afnn5")

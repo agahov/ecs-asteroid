@@ -5,5 +5,5 @@ extends Component
 
 @export var direction: Vector2 = Vector2.RIGHT
 
-func _ready() -> void:
-	_comp_type = Components.POSITION
+func _init() -> void:
+	comp_type = Components.POSITION

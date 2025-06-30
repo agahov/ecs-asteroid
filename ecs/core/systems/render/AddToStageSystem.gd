@@ -19,8 +19,9 @@ func _process(_delta):
 	for entity in entities:
 		#print("add to Stage")
 		var polygon_comp = entity.get_comp(Components.POLYGON_RENDER)
-
-		canvas.add_child(polygon_comp.polygon)
+	
+		if polygon_comp.polygon.get_parent() != canvas:
+			canvas.add_child(polygon_comp.polygon)
 		
 		
 		#canvas.add_child(entity)

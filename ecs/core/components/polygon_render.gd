@@ -9,4 +9,4 @@ var is_changed: bool = true
 
 
 func _init():
-	_comp_type = Components.POLYGON_RENDER
+	comp_type = Components.POLYGON_RENDER

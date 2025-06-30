@@ -15,6 +15,7 @@
 
 [node name="Ship" type="Node"]
 script = ExtResource("1_g0wmu")
+comp_type = "ship_entity"
 
 [node name="Ship" type="Node" parent="."]
 script = ExtResource("9_pjt7e")

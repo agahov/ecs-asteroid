@@ -30,15 +30,18 @@ func register_component(entity: Entity, comp: Component) -> void:
 		entity.components[comp.get_comp_name()] = comp
 
 func add_component_to_entity(entity: Entity, comp: Component) -> void:
-	if entity.get_node_or_null(NodePath(comp.name)) != null:
+	# Check if component already exists by checking its parent
+	if comp.get_parent() != null:
 		print("Component already exists as a child.")
 	else:
+		comp.name = "~"+comp.get_comp_name()
 		entity.add_child(comp)
 		register_component(entity, comp)
 		update_entity_groups(entity)
 
 func remove_component_from_entity(entity: Entity, comp: Component) -> void:
-	if entity.get_node_or_null(NodePath(comp.name)) != null:
+	# Check if component exists and belongs to this specific entity
+	if comp.get_parent() == entity:
 		entity.remove_child(comp)
 		entity.components.erase(comp.get_comp_name())
 		update_entity_groups(entity)

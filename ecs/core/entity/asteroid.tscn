@@ -15,6 +15,7 @@
 
 [node name="Asteroid" type="Node"]
 script = ExtResource("1_oykf8")
+comp_type = "asteroid_entity"
 
 [node name="Asteroid" type="Node" parent="."]
 script = ExtResource("9_ws8qh")
@@ -49,7 +50,7 @@ script = ExtResource("8_ui3le")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("10_jgoya")
-value = 100.0
+value = 40.0
 
 [node name="Shape" type="Node" parent="."]
 script = ExtResource("11_bhns7")

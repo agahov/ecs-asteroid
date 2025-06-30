@@ -1,5 +1,5 @@
 extends Component
 
 
-func _ready() -> void:
-	_comp_type = Components.ACTIVE
+func _init() -> void:
+	comp_type = Components.ACTIVE

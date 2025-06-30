@@ -14,20 +14,21 @@ var group_components = {
 	QueryGroup.RENDERABL: [Components.POSITION, Components.POLYGON_RENDER, Components.STYLE],
 	QueryGroup.INPUT_MOVE: [Components.INPUT_MOVEMENT],
 	QueryGroup.MOVEABLE: [Components.MOVEMENT, Components.POSITION],
+	QueryGroup.IMPULSEABLE: [Components.MOVEMENT, Components.IMPULSE],
 	QueryGroup.TIME_ACTIVATE: [Components.TIMER],
 	QueryGroup.LIFE_TIME: [Components.LIFE_TIME],
-	QueryGroup.DEATH: [Components.HEALTH],#ACTIVE?
+	QueryGroup.DEATH: [Components.HEALTH], # ACTIVE?
 	QueryGroup.ASTEROID_CREATOR: [Components.ASTEROID, Components.BUILDER, Components.ACTIVE, ],
 	QueryGroup.ASTEROID_DESTROYER: [Components.ASTEROID, Components.HEALTH, ],
-	QueryGroup.ASTEROID_MOVE: [Components.ASTEROID, Components.MOVEMENT, Components.POSITION ],
+	QueryGroup.ASTEROID_MOVE: [Components.ASTEROID, Components.MOVEMENT, Components.POSITION],
+	QueryGroup.ASTEROID_DEMAGE: [Components.ASTEROID, Components.DAMAGE],
 	#TODO: extract polygon_data to comp
 	QueryGroup.COLLIDE_DATA: [Components.COLLIDER, Components.POSITION, Components.POLYGON_RENDER, ],
 	QueryGroup.HITTER: [Components.COLLIDER, Components.HIT],
-	QueryGroup.DAMAGEABLE: [Components.DAMAGE, Components.HEALTH, Components.STYLE ],
+	QueryGroup.DAMAGEABLE: [Components.DAMAGE, Components.HEALTH, Components.STYLE],
 	QueryGroup.POLYGON_UPDATE: [Components.POLYGON_RENDER, Components.POLYGON_SHAPE, Components.SIZE],
 	
-	
-	
+	QueryGroup.DELETE: [Components.DELETE], # ACTIVE?
 	
 }
 
@@ -63,8 +64,12 @@ func _ready():
 	 load("res://ecs/core/components/input_movement.gd"))
 	register_component_type(Components.MOVEMENT,
 	 load("res://ecs/core/components/movement.gd"))
+	register_component_type(Components.IMPULSE,
+	 load("res://ecs/core/components/impulse.gd"))
 	register_component_type(Components.TIMER,
 	 load("res://ecs/core/components/timer.gd"))
+	register_component_type(Components.LIFE_TIME,
+	 load("res://ecs/core/components/life_time.gd"))
 	register_component_type(Components.ASTEROID,
 	 load("res://ecs/core/components/asteroid.gd"))
 	register_component_type(Components.SHIP,
@@ -79,3 +84,9 @@ func _ready():
 	 load("res://ecs/core/components/damage.gd"))
 	register_component_type(Components.COLLIDER,
 	 load("res://ecs/core/components/collision/collider.gd"))
+	register_component_type(Components.ADD,
+	 load("res://ecs/core/components/add_triger.gd"))
+	register_component_type(Components.REMOVE,
+	 load("res://ecs/core/components/remove_triger.gd"))
+	register_component_type(Components.DELETE,
+	 load("res://ecs/core/components/delete.gd"))

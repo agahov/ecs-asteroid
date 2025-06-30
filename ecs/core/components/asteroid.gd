@@ -1,5 +1,5 @@
 extends Component
 
 
-func _ready() -> void:
-	_comp_type = Components.ASTEROID
+func _init() -> void:
+	comp_type = Components.ASTEROID

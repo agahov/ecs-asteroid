@@ -1,5 +1,6 @@
 extends Component
 
 
+
 func _init() -> void:
-	comp_type = Components.SHIP
+	comp_type = Components.DELETE

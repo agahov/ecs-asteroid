@@ -9,36 +9,35 @@ func get_group():
 	return QueryGroup.COLLIDE_DATA
 
 
-
-
-
-		
 func _process(_delta):
 	# Get all entities in the renderable group
-	var entities = get_tree().get_nodes_in_group(group) 
+	var entities = get_tree().get_nodes_in_group(group)
 	
 	# Process each entity
 	for entity in entities:
-		update(entity,_delta)
-
+		update(entity, _delta)
 
 
 func update(entity, _delta):
-
+	#var poly_comp_name = Ecs.to_s(Ecs.Components, Ecs.Components.POLYGON_RENDER)
 	var position_comp = entity.get_comp(Components.POSITION)
 	var polygon_comp = entity.get_comp(Components.POLYGON_RENDER)
 	
 	var collide_comp = entity.get_comp(Components.COLLIDER)
 	
-	
+	# Check if required components exist
+	if position_comp == null or polygon_comp == null or collide_comp == null:
+		return
 
+	#TODO separate postion and form
+	collide_comp.area2D.position = position_comp.position
+	
+	
 	#collide_comp.area2D.position = position_comp.position+Vector2(10,10)
-	collide_comp.area2D.global_position = position_comp.position+Vector2(10,10)
+	collide_comp.area2D.global_position = position_comp.position + Vector2(10, 10)
 	
 	  
 	#collide_comp.area2D.position = position_comp.position
-	if polygon_comp.is_changed:  
+	if polygon_comp.is_changed:
 		collide_comp.collision_polygon.polygon = polygon_comp.render_points
 		polygon_comp.is_changed = false
-	
-	

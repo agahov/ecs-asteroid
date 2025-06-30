@@ -1,12 +1,8 @@
 extends Component
 
 
+@export var time: float = 2.0
 
 
-@export var time:float = 0.0
-
-
-
-
-func _ready() -> void:
-	_comp_type = Components.LIFE_TIME
+func _init() -> void:
+	comp_type = Components.LIFE_TIME

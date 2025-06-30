@@ -1,7 +1,5 @@
 extends Component
 
 
-
-
-func _ready() -> void:
-	_comp_type = Components.OUT_OF_STAGE
+func _init() -> void:
+	comp_type = Components.OUT_OF_STAGE
