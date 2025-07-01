@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hdw0ri3i2fm6"]
+[gd_scene load_steps=14 format=3 uid="uid://hdw0ri3i2fm6"]
 
 [ext_resource type="Script" uid="uid://btu1x76mn384m" path="res://ecs/core/components/position.gd" id="1_kxidp"]
 [ext_resource type="Script" uid="uid://bgu4rdtht7f6b" path="res://ecs/core/entity/asteroid.gd" id="1_oykf8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://14xnmrd870t" path="res://ecs/core/components/health.gd" id="10_jgoya"]
 [ext_resource type="Script" uid="uid://cxn53mqeh7ctm" path="res://ecs/core/components/shape.gd" id="11_bhns7"]
 [ext_resource type="Script" uid="uid://bvpb8775jlesy" path="res://ecs/core/components/size.gd" id="12_0nijv"]
+[ext_resource type="Script" uid="uid://dlf6uxkf42762" path="res://ecs/core/components/dumping.gd" id="13_t02qh"]
 
 [node name="Asteroid" type="Node"]
 script = ExtResource("1_oykf8")
@@ -33,7 +34,8 @@ script = ExtResource("3_mumeg")
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_l0nmj")
 direction = Vector2(1, 1)
-speed = 60
+speed = 200
+min_speed = 30
 
 [node name="Style" type="Node" parent="."]
 script = ExtResource("6_mumeg")
@@ -60,5 +62,9 @@ vertex_count = 20
 [node name="Size" type="Node" parent="."]
 script = ExtResource("12_0nijv")
 size = Vector2(100, 100)
+
+[node name="Dumpling" type="Node" parent="."]
+script = ExtResource("13_t02qh")
+factor = 0.99
 
 [editable path="Collider"]

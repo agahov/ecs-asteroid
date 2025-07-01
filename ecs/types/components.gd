@@ -14,6 +14,7 @@ static var TIMER = "timer" # in sec
 static var LIFE_TIME = "life_time" # in sec
 static var IMPULSE = "impulse"
 static var MOVEMENT = "movement"
+static var DUMPING = "dumping"
 static var INPUT_MOVEMENT = "input_movement"
 static var OUT_OF_STAGE = "out_of_stage"
 static var ACTIVE = "active"

@@ -15,6 +15,8 @@ var group_components = {
 	QueryGroup.INPUT_MOVE: [Components.INPUT_MOVEMENT],
 	QueryGroup.MOVEABLE: [Components.MOVEMENT, Components.POSITION],
 	QueryGroup.IMPULSEABLE: [Components.MOVEMENT, Components.IMPULSE],
+	QueryGroup.DUMPABLE: [Components.MOVEMENT, Components.DUMPING],
+	
 	QueryGroup.TIME_ACTIVATE: [Components.TIMER],
 	QueryGroup.LIFE_TIME: [Components.LIFE_TIME],
 	QueryGroup.DEATH: [Components.HEALTH], # ACTIVE?
@@ -90,3 +92,5 @@ func _ready():
 	 load("res://ecs/core/components/remove_triger.gd"))
 	register_component_type(Components.DELETE,
 	 load("res://ecs/core/components/delete.gd"))
+	register_component_type(Components.DUMPING,
+	 load("res://ecs/core/components/dumping.gd"))

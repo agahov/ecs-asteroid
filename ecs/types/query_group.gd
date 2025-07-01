@@ -9,6 +9,8 @@ static var POLYGON_UPDATE = "poligon_update"
 static var COLLIDE_DATA = "collide_date"
 static var MOVEABLE = "moveable"
 static var IMPULSEABLE = "impulesable"
+static var DUMPABLE = "dampable"
+
 static var INPUT_MOVE = "input_move"
 static var ASTEROID_CREATOR = "asteroid_creator"
 static var ASTEROID_DESTROYER = "asteroid_destroyer"
