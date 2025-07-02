@@ -77,7 +77,7 @@ canvas = NodePath("../../../Canvas")
 bullet_scence = ExtResource("7_qt76e")
 is_active = true
 
-[node name="DumpingSystem" type="Node" parent="game/ecs/systems"]
+[node name="DampingSystem" type="Node" parent="game/ecs/systems"]
 script = ExtResource("10_ub8w1")
 is_active = true
 
